@@ -1,75 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
+{% set active_page = "index" %}
+{% block main %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Bem Vindo!</h1>
+            <p> Temos um simples objetivo, tentar facilitar nossa vida tento uma api maneira para facilitar a manipulação de 
+                imagens em alguns projetos 
+            </p>
+            <p> A ideia é simples e pode ser aplicada por vocês em outros projetos, em python, php, c#, vou dar uma ideia conceitual 
+                ou vocês podem manipular essa mesma melhorando e tornando útil para vocês
+            </p>
+            <p> 
+                Vamos adicionando alguns recursos simples com o tempo
+            </p>
+        </div>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Serviço de export imagens</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-
-<body>
-
-    <body>
-        {% include 'docs/menu.html' %}
-        <main role="main">
-
-            <!-- Main jumbotron for a primary marketing message or call to action -->
-            <div class="jumbotron">
-                <div class="container">
-                    <h1 class="display-3">Bem Vindo!</h1>
-                    <p> Temos um simples objetivo, tentar facilitar nossa vida tento uma api maneira para facilitar a manipulação de 
-                        imagens em alguns projetos 
-                    </p>
-                    <p> A ideia e simples e pode ser aplicada por vocês em outros projetos, em python, php, c#, vou dar uma ideia conceitual 
-                        ou vocês podem manipular essa mesma melhorando e tornando util para vocês
-                    </p>
-                    <p> 
-                        Vamos adicionando alguns recursos simples com o tempo
-                    </p>
-                </div>
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Redimensionamento</h2>
+                <p>A partir de um get trazer a imagem ja na dimenção correta que nos precisamos</p>
             </div>
+            <div class="col-md-4">
+                <h2>Marca d'água</h2>
+                <p>Adicionar um logo pré-selecionado para proteger nossas imagens</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Otimização</h2>
+                <p>Vamos tentar reduzir a imagem com algun algoritmos de otimização</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Cache</h2>
+                <p>Melhoramento no sistema de retorno com cache em memória</p>
+            </div>
+        </div>
+        <hr>
 
-            <div class="container">
-                <!-- Example row of columns -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2>Redimencionamento</h2>
-                        <p>Apatir de um get trazer a imagem ja na dimenção correta que nos precisamos</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Marca d'agua</h2>
-                        <p>Adicionar um logo pre-selecionado para proteger nossas imagens</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h2>Otimização</h2>
-                        <p>Vamos tentar reduzir a imagem com algun algoritimos de otimização</p>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h2>Cache</h2>
-                        <p>Melhoramento no sistema retorno com cache em memoria</p>
-                    </div>
-                </div>
-                <hr>
-
-            </div> <!-- /container -->
-
-        </main>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-    </body>
-
-</html>
+    </div> <!-- /container -->
+{% endblock  %}%}

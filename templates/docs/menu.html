@@ -1,3 +1,11 @@
+{% set navigation_bar = [
+    ('/', 'index', 'Home'),
+    ('/upload-image/', 'upload-image', 'Imagens'),
+    ('/upload-logo/', 'upload-logo', 'Marca d\'água'),
+    ('/get-images/','get-images','Teste')
+] -%}
+{% set active_page = active_page|default('index') -%}
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Image Optimizer</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
@@ -7,18 +15,16 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            {% for href, id, nome_pagina in navigation_bar %}
+            <li class="nav-item {% if id == active_page %} active{% endif%}">
+                    <a class="nav-link" href="{{ href|e }}">
+                        {{ nome_pagina|e }} 
+                        {% if id == active_page %}
+                            <span class="sr-only">(current)</span>
+                        {% endif %}
+                    </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/upload-image/">Imagens</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/upload-logo/">Marca d'agua</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/get-images/">Teste</a>
-            </li>
+            {% endfor %}
         </ul>
     </div>
 </nav>

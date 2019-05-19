@@ -77,12 +77,8 @@ def image():
     marca = request.args.get('marca')
     filename = image.split('.')
 
-    if width and height:
-        new_name = "{}_{}_{}.{}".format(filename[0],height,width,filename[1]);
-    elif width:
-        new_name = "{}_w{}.{}".format(filename[0],width,filename[1]);
-    elif height:
-        new_name = "{}_h{}.{}".format(filename[0],height,filename[1]);
+    if width or height:
+        new_name = __new_image_name_factory(filename[0],filename[1],width,height)
     else:
         new_name = image
 
@@ -101,6 +97,16 @@ def image():
         new_image.save(os.path.join(CURRENT_DIRECTORY, 'uploads', 'imagens', new_name), optimized=True) 
 
     return send_file(os.path.join(CURRENT_DIRECTORY, 'uploads', 'imagens', new_name), mimetype='image/jpeg')
+
+def __new_image_name_factory(name,file_extension,width,height):
+    if width and height:
+        new_name = "{}_{}_{}.{}".format(name,height,width,file_extension)
+    elif width:
+        new_name = "{}_w{}.{}".format(name,width,file_extension)
+    elif height:
+        new_name = "{}_h{}.{}".format(name,height,file_extension)
+    return new_name
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -7,17 +7,20 @@ app = Flask(__name__)
 def resize_image(img, width=None, height=None):
     if width and height:
         img_resize = img.resize((width, height))
-    elif width:
-        original_width, original_height = img.size
+    else:
+        original_width, original_height = img.size    
+        img_resize = img.resize(__resize_factory(original_width, original_height, width,height))
+    return img_resize
+
+def __resize_factory(original_width, original_height,width,height):    
+    if width:
         percent_change = (width*100)/original_width
         new_height = int(original_height*(percent_change/100))
-        img_resize = img.resize((width, new_height))
+        return (width, new_height)
     elif height:
-        original_width, original_height = img.size
         percent_change = (height*100)/original_height
         new_width = int(original_width*(percent_change/100))
-        img_resize = img.resize((new_width, height))
-    return img_resize
+        return (new_width, height)
 
 def trans_paste(fg_img, bg_img, alpha=1.0, box=(0,0)):
     fg_img_trans = Image.new("RGBA",fg_img.size)

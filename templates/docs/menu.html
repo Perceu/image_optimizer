@@ -2,7 +2,8 @@
     ('/', 'index', 'Home'),
     ('/upload-image/', 'upload-image', 'Imagens'),
     ('/upload-logo/', 'upload-logo', 'Marca d\'água'),
-    ('/get-images/','get-images','Teste')
+    ('/get-images/', 'get-images', 'Redimencionamento e marca d\'água'),
+    ('/py-tesseract/', 'py-tesseract', 'Tesseract')
 ] -%}
 {% set active_page = active_page|default('index') -%}
 
@@ -17,12 +18,12 @@
         <ul class="navbar-nav mr-auto">
             {% for href, id, nome_pagina in navigation_bar %}
             <li class="nav-item {% if id == active_page %} active{% endif%}">
-                    <a class="nav-link" href="{{ href|e }}">
-                        {{ nome_pagina|e }} 
-                        {% if id == active_page %}
-                            <span class="sr-only">(current)</span>
-                        {% endif %}
-                    </a>
+                <a class="nav-link" href="{{ href|e }}">
+                    {{ nome_pagina | e }} 
+                    {% if id == active_page %}
+                        <span class="sr-only">(current)</span>
+                    {% endif %}
+                </a>
             </li>
             {% endfor %}
         </ul>

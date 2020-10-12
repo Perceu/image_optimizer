@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% set active_page = "get-images" %}
+{% block main %}
+    <div role="mt-5">
+        <div class="row pt-4">
+                <div class="offset-2 col-8 pt-4 order-md-1">
+                    <h4 class="mb-3 mt-3">Utilizar py-tesseract</h4>
+                    <form action="/tesseract" target="blank" class="needs-validation">
+                        <label for="image">Imagens</label>
+                        <div class="row">
+                            {% for imagen in imagens %}
+                            <div class="col-md-3 mb-3">
+                                <label for="{{imagen}}">
+                                    <img src="/image/?image={{imagen}}&height=200"><br>
+                                    <input type="radio" name="image" value="{{imagen}}" id="{{imagen}}">
+                                    {{imagen}}
+                                </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Buscar Imagem</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+{% endblock  %}

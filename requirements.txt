@@ -1,3 +1,5 @@
 Flask
 Pillow
 pytesseract
+boto3
+python-decouple

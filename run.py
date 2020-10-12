@@ -2,8 +2,9 @@ import os
 from flask import Flask, Response, send_file, render_template, request, redirect, jsonify
 from utils import fileutils
 from PIL import Image
+from datetime import datetime
+from decouple import config
 import pytesseract
-
 
 
 CURRENT_DIRECTORY = os.getcwd()
@@ -78,6 +79,31 @@ def tesseract():
         "text": text
     })
 
+@app.route("/boto3/")
+def textextract_aws():
+
+    import boto3
+
+    image = request.args.get('image')
+    text = ""
+    if os.path.isfile(os.path.join(CURRENT_DIRECTORY, 'uploads', 'imagens', image)):
+        document_name = os.path.join(CURRENT_DIRECTORY, 'uploads', 'imagens', image)
+        with open(document_name, 'rb') as document:
+            imageBytes = bytearray(document.read())
+
+    textract = boto3.client('textract', 
+            region_name='us-west-2', 
+            aws_access_key_id=config("AWS_ACCESS_KEY_ID"),
+            aws_secret_access_key= config("AWS_SECRET_ACCESS_KEY"))
+    response = textract.detect_document_text(Document={'Bytes': imageBytes})
+
+    texts = []
+    for item in response["Blocks"]:
+        if item["BlockType"] == "LINE":
+            texts.append({'text': item["Text"]})
+
+    return jsonify(texts)
+
 @app.route("/image/", methods=['GET', ])
 def image():
     image = request.args.get('image')
@@ -107,7 +133,6 @@ def image():
 
     return send_file(os.path.join(CURRENT_DIRECTORY, 'uploads', 'imagens', new_name), mimetype='image/jpeg')
 
-   
 
 if __name__ == '__main__':
     app.run(debug=True)

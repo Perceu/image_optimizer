@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
-{% set active_page = "get-images" %}
+
+{% set active_page = "py-tesseract" %}
+
 {% block main %}
     <div role="mt-5">
         <div class="row pt-4">
-                <div class="offset-2 col-8 pt-4 order-md-1">
+                <div class="offset-2 col-8 pt-4">
                     <h4 class="mb-3 mt-3">Utilizar py-tesseract</h4>
                     <form action="/tesseract" target="blank" class="needs-validation">
                         <label for="image">Imagens</label>
@@ -19,7 +21,8 @@
                             {% endfor %}
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Buscar Imagem</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Parsear texto</button>
+                        <button class="btn btn-primary btn-lg btn-block" formaction="/boto3" type="submit">Parse text using AWS</button>
                     </form>
                 </div>
             </div>

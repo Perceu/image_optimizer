@@ -1,4 +1,4 @@
-#image Optimizer
+# Image Optimizer
 --
 A ideia desse projeto mostrar que se podem ser geradas alternativas através da criatividade  para otimizar imagens a modo de melhorar o trafégo de websites 
 e, assim, torná-los mais aptos rankearem melhor. 
